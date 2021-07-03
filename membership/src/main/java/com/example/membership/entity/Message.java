@@ -1,7 +1,5 @@
 package com.example.membership.entity;
 
-import javax.persistence.Entity;
-
 import lombok.Data;
 
 @Data
@@ -12,7 +10,7 @@ public class Message {
 
     public Message() {
         this.success = false;
-        this.error = new ErrorMsg();
+        this.error = new ErrorMsg("X-USER-ID",400);
         this.response = null;
     }
     public enum StatusEnum {

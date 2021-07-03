@@ -10,4 +10,9 @@ public class StringUtil {
         }
         return false;
     }
+    public static boolean isNum(String str)
+    {
+        boolean isNumeric =  str.matches("[+-]?\\d*(\\.\\d+)?");
+        return isNumeric;
+    }
 }
