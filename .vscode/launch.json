@@ -1,10 +1,10 @@
 {
-    "configurations": [
+    "configurations": [      
         {
             "type": "java",
             "name": "Spring Boot-MembershipApplication<membership>",
             "request": "launch",
-            "cwd": "${workspaceFolder}",
+            "cwd": "root",
             "console": "internalConsole",
             "mainClass": "com.example.membership.MembershipApplication",
             "projectName": "membership",

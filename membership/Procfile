@@ -1,5 +1,0 @@
-web: java $JAVA_OPTS -jar --port $PORT target/*.jar
-build: mvn install 
-seed: /bin/true
-migrate: /bin/true
-
