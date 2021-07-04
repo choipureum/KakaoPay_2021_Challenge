@@ -128,8 +128,12 @@ public class MembershipController {
     }
     return msg;
   }
-  //3. 멤버십 삭제(비활성화)하기 API
-
+  /**
+   * 3. 멤버십 삭제(비활성화)하기 API
+   * @param membershipId
+   * @param userId
+   * @return
+   */
   @DeleteMapping(value="/membership/{membershipId}")
   public Message patchMembershipYN(@PathVariable String membershipId,@RequestHeader("X-USER-ID") String userId)
   {
@@ -158,7 +162,13 @@ public class MembershipController {
     
     return msg;
   }
-  //4. 멤버십 상세 조회하기 API
+
+  /**
+   * 4. 멤버십 상세 조회하기 API
+   * @param membershipId
+   * @param userId
+   * @return
+   */
   @GetMapping(value = "/membership/{membershipId}")
   public Message getMembershipBymembershipId(@PathVariable String membershipId,@RequestHeader("X-USER-ID") String userId)
   {
@@ -185,7 +195,13 @@ public class MembershipController {
    
     return msg;
   }
-  //5. 포인트 적립하기 API
+
+  /**
+   * 5. 포인트 적립하기 API
+   * @param userId
+   * @param param
+   * @return
+   */
   @PutMapping(value="/membership/point")
   public Message patchMembershipYN(@RequestHeader("X-USER-ID") String userId, @RequestBody Map<String,Object> param)
   {
@@ -220,8 +236,11 @@ public class MembershipController {
     }
     return msg;
   }
-  //6. 전체 제휴사 조회 API(for test)
 
+  /**
+   * 6. 전체 제휴사 조회 API(for test)
+   * @return
+   */
   @GetMapping(value="/membership/company")
   public Object getMembershipCompany()
   {
