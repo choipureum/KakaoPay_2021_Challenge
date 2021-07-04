@@ -1,64 +1,6 @@
-<div class="assignment-topbar-wrap">
-  <div class="assignment-topbar">
-    <h6 class="title">2021 카카오페이 서버 개발자 과제 챌린지 for 최푸름</h6>
-    <div class="topbar-button-group">
-        <a onclick="Hera.assignmentChallenges.showChannelIO()" class="btn-topbar btn-chatting" data-remote="true" href="#">
-          <span class="btn-topbar-icon">
-            <svg class="ic-20 btn-topbar-icon__svg"><use xlink:href="/assets/svg-defs-85c488ea18b5a12778df9adc779a4ea8c1a0fdbb2da2f65a3812b7dfb19f6045.svg#ic-chat"/></svg>
-          </span>
-          <span>감독관 채팅</span>
-</a>        <a class="btn-topbar btn-message-archive" data-remote="true" href="/tests/27145/notices">
-          <span class="btn-topbar-icon">
-            <svg class="ic-18 btn-topbar-icon__svg"><use xlink:href="/assets/svg-defs-85c488ea18b5a12778df9adc779a4ea8c1a0fdbb2da2f65a3812b7dfb19f6045.svg#ic-inbox-massage"/></svg>
-          </span>
-          <span>메시지 보관함</span>
-</a>    </div>
-  </div>
-  <div class="assignment-nav nav nav-tabs-dark">
-    <h6 class="description">vscode editor를 이용해 주어진 과제를 완료하세요.</h6>
-    <ul class="list-options">
-      <div id="responsive-dropdown" class="option-items-dropdown">
-        <button id='js-responsive-dropdown' class="btn btn-dark btn-md responsive-dropdown-btn" role="button" data-target="#responsive-dropdown">
-          메뉴<svg class="ic-16"><use xlink:href="/assets/svg-defs-85c488ea18b5a12778df9adc779a4ea8c1a0fdbb2da2f65a3812b7dfb19f6045.svg#ic-keyboard-arrow-down"/></svg>
-        </button>
-        <div class="dropdown-option-wrap">
-          <li class="option-item"><button class="btn btn-dark btn-md" id="vscode-restart" disabled>vscode 재시작</button></li>
-          <li class="option-item">
-            <button class="btn btn-dark btn-md" data-toggle="modal" data-target="#challengeable-modal">문제 보기</button>
-          </li>
-          <li class="option-item">
-            <a class="btn btn-dark btn-md" data-remote="true" href="/help_vscode">도움말</a>
-          </li>
-          <li class="option-item" data-toggle="tooltip" data-placement="bottom" data-original-title="버튼을 누르기 전 터미널에서 서버를 실행해주세요.">
-            <button class="btn btn-primary btn-md" rel="noopener" data-url="#" data-test-token-id="1151009" id="vscode-launch" disabled>실행</button>
-          </li>
-            <li class="option-item">
-              <button class="btn btn-primary btn-md" id="vscode-submit" disabled>최종 제출 및 테스트 종료</button>
-            </li>
-        </div>
-      </div>
-        <li class="option-item option-item-timer">
-          <span class="timer text-xs-left hidden">
-      <span class="end-label">종료까지</span><br>
-      <span class="time"></span>
-  </span>
 
-        </li>
-    </ul>
-  </div>
-</div>
-
-<div class="modal fade" tabindex="-1" role="dialog" ref="modal" id="challengeable-modal">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h3 class="modal-title">문제 보기</h3>
-      </div>
-      <div class="modal-body">
-        <div class="markdown github"><h1>카카오페이 서버개발 과제</h1>
+ <h6 class="title">2021 카카오페이 서버 개발자 과제 챌린지 for 최푸름</h6>
+<h1>카카오페이 서버개발 과제</h1>
 
 <h2>안내</h2>
 
