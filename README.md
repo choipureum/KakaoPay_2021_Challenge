@@ -53,3 +53,6 @@ build: mvn install
 - **seed**: 초기 데이터를 데이터베이스에 입력하기 위한 명령을 지정합니다. migrate 이후에 실행됩니다.
 
 - 이외에 다른 프로세스 유형은 지원하지 않습니다.
+
+![image](https://user-images.githubusercontent.com/55127127/124385448-a2793600-dd10-11eb-9845-592910487a12.png)
+
