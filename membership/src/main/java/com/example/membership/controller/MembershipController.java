@@ -35,7 +35,11 @@ public class MembershipController {
 
   public static final Logger logger = LoggerFactory.getLogger(MembershipController.class);
 
-  // 1. 멤버십 user_id값으로 조회하기 API
+  /**
+   * 1. 멤버십 user_id값으로 조회하기 API
+   * @param userId
+   * @return
+   */
   @GetMapping(value = "/membership")
   public Message getMembershipAll(@RequestHeader("X-USER-ID") String userId)
   {
@@ -62,7 +66,13 @@ public class MembershipController {
 
     return msg;
   }
-  //2. 멤버십 등록하기 API
+
+  /**
+   * 2. 멤버십 등록하기 API
+   * @param userId
+   * @param membership_tmp
+   * @return
+   */
   @PostMapping(value="/membership")
   public Message setMembership(@RequestHeader("X-USER-ID") String userId,@RequestBody Membership membership_tmp)
   {
@@ -187,9 +197,13 @@ public class MembershipController {
       logger.warn(String.format("[Get] /api/v1/membership/Get by $s:: none!",userId));      
     }
     String membershipId = param.get("membershipId").toString();
+
+    //포인트 적립
+    //  사용금액(1%)
     int amount = StringUtil.isNum(param.get("amount").toString())?(int)param.get("amount"):0;
-    //사용금액(1%)
+
     int point = (int) Math.floor(amount / 100);
+
     boolean isUpdate = membershipService.putMembershipPoint(userId,membershipId,point);
     
     if(!isUpdate)

@@ -9,10 +9,6 @@ class MembershipApplicationTests {
 
 	
 	@Test
-	public void contextLoads() throws Exception {
-		
+	public void contextLoads() throws Exception {	
 	}
-
-
-
 }

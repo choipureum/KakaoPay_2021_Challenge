@@ -37,7 +37,7 @@ public class Member{
 
     @OneToMany 
     private List<Membership> membership = new ArrayList<Membership>();
-
+    
     @Builder
     public Member(String userId) {
         Assert.hasText(userId, "membershipId must not be empty");       
