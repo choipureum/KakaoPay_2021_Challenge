@@ -12,11 +12,18 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MembershipJPARepo extends JpaRepository<Membership,Long>{
 
-    //Membership find by userId
+    /**
+     * SELECT * FROM memberShip WHERE userId = @param userId AND membershipId = @param membershipId;
+     * @param userId
+     * @param membershipId
+     * @return
+     */
     @Transactional
     Membership findByUserIdAndMembershipId(String userId,String membershipId);
 
-    //status='Y' 만 전체검색
+    /**
+     * SELECT * FROM memberShip WHERE membershipStatus = 'Y';
+     */
     @Transactional
-	List<Membership> findByMembershipStatus(char c);   
+	List<Membership> findByMembershipStatus(char status);   
 } 

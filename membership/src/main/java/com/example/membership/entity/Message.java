@@ -2,6 +2,7 @@ package com.example.membership.entity;
 
 import lombok.Data;
 
+
 @Data
 public class Message {
     private boolean success;  

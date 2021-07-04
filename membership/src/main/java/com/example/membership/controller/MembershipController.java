@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 import java.util.Map;
 
-import com.example.membership.entity.*;
+import com.example.membership.entity.ErrorMsg;
 import com.example.membership.entity.Membership;
+import com.example.membership.entity.MembershipCompany;
+import com.example.membership.entity.MembershipJPARepo;
 import com.example.membership.entity.Message;
 import com.example.membership.service.MembershipService;
 import com.example.membership.util.StringUtil;
@@ -28,8 +29,6 @@ import com.example.membership.util.StringUtil;
 public class MembershipController {
   @Autowired
   private MembershipJPARepo membershipJPARepo;
-  @Autowired
-  private MembershipCompanyJPARepo membershipCompanyJPARepo;
   @Autowired
   private MembershipService membershipService;
 
@@ -50,8 +49,8 @@ public class MembershipController {
       {
         logger.warn("[Retrieve] /api/v1/membership/Get:: none!");      
       }
-      else{
-        msg.setSuccess(true);
+      else{        
+        msg.setSuccess(true); 
         msg.setError(null);
         msg.setResponse(users);
       }
@@ -68,7 +67,8 @@ public class MembershipController {
   public Message setMembership(@RequestHeader("X-USER-ID") String userId,@RequestBody Membership membership_tmp)
   {
     logger.info("[Regist] /api/v1/membership/Get:: start");
-    Message msg = new Message();    
+    Message msg = new Message(); 
+       
     //1. 식별값(X-USER-ID) : NONE
     if(StringUtil.isNullOrEmpty(userId))
     {
@@ -80,15 +80,28 @@ public class MembershipController {
       //2-3 point num 체크
     String membershipId = membership_tmp.getMembershipId();
     String membershipName = membership_tmp.getMembershipName();
-    int point = membership_tmp.getPoint() ==null ? 0 : membership_tmp.getPoint();
-
+    int point = membership_tmp.getPoint() == null ? 0 : membership_tmp.getPoint();
+    
     boolean isOurCompanyYN = membershipService.IsMemberCompany(membershipId, membershipName);
-
-    if(!isOurCompanyYN)
+    boolean isUseCompanyById = membershipService.isUseMembership(userId,membershipId);
+    //제휴사 아님
+    if(!isOurCompanyYN )
     {
        msg.setError(new ErrorMsg("membership Info",400));
       
     }
+    //이미 등록된 멤버십일경우 
+    //기존 포인트에 플러스 point적립
+    else if(isUseCompanyById)
+    {
+      membershipService.putMembershipPoint(userId, membershipId, point);
+      msg.setSuccess(true);
+      msg.setError(null);
+      msg.setResponse(null);
+
+      return msg;
+    }
+    //success : 제휴사일때
     else
     {
       Membership membership = Membership.builder()
@@ -106,6 +119,7 @@ public class MembershipController {
     return msg;
   }
   //3. 멤버십 삭제(비활성화)하기 API
+
   @DeleteMapping(value="/membership/{membershipId}")
   public Message patchMembershipYN(@PathVariable String membershipId,@RequestHeader("X-USER-ID") String userId)
   {
@@ -174,7 +188,9 @@ public class MembershipController {
     }
     String membershipId = param.get("membershipId").toString();
     int amount = StringUtil.isNum(param.get("amount").toString())?(int)param.get("amount"):0;
-    boolean isUpdate = membershipService.putMembershipPoint(userId,membershipId,amount);
+    //사용금액(1%)
+    int point = (int) Math.floor(amount / 100);
+    boolean isUpdate = membershipService.putMembershipPoint(userId,membershipId,point);
     
     if(!isUpdate)
     {
@@ -191,6 +207,7 @@ public class MembershipController {
     return msg;
   }
   //6. 전체 제휴사 조회 API(for test)
+
   @GetMapping(value="/membership/company")
   public Object getMembershipCompany()
   {
