@@ -55,4 +55,6 @@ build: mvn install
 - 이외에 다른 프로세스 유형은 지원하지 않습니다.
 
 ![image](https://user-images.githubusercontent.com/55127127/124385448-a2793600-dd10-11eb-9845-592910487a12.png)
+![image](https://user-images.githubusercontent.com/55127127/124385509-ef5d0c80-dd10-11eb-86ee-8d73ad749c1d.png)
+
 
