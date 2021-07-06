@@ -1,5 +1,6 @@
 
- <h6 class="title">2021 카카오페이 서버 개발자 과제 챌린지 for 최푸름</h6>
+<!--
+<h6 class="title">2021 카카오페이 서버 개발자 과제 챌린지 for 최푸름</h6>
 <h1>카카오페이 서버개발 과제</h1>
 
 <h2>안내</h2>
@@ -633,3 +634,4 @@ Content-type 응답 형태는 application/json(JSON) 형식을 사용합니다.<
     </div>
   </div>
 </div>
+-->
